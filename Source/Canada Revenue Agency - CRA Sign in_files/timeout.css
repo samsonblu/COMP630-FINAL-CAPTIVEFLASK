@@ -1,0 +1,25 @@
+
+	
+#awsc-overlay div {
+     
+     margin: 100px auto;
+     background-color: #fff;
+     
+     padding:15px;
+     text-align:center;
+}	
+	
+#awsc-overlay {
+     visibility: visible;
+     position: fixed;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background-color:gray;
+     opacity:0.96;
+     filter:alpha(opacity=96); 
+     zoom:1;
+}

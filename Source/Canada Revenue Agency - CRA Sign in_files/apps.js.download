@@ -1,0 +1,211 @@
+$(function() {
+    
+    // Apply additional wet css classes to any document elements of
+    // class errorMessage.  (Works in tandem with struts2 fielderror tag.) 
+    $(".errorMessage").addClass("strong error list-unstyled mrgn-bttm-0");
+    $(".errorMessage li").addClass("label label-danger label-error");
+    
+    // Accessibility:  place focus on the "There are validation errors" message if it exists 
+    $( ".alert.alert-danger > h2 " ).attr( "tabindex", "0").focus().css( "outline", "0" );    
+});
+
+/**
+ * jQuery html5type plugin.  (Allows struts1 apps to use the HTML5 types.)
+ */
+(function($) {
+    $.fn.useHtml5Type = function(options) {
+               
+        return this.each(
+              function() {
+                var $this = $(this);
+                
+                try {
+                     $this.attr(options);
+                } catch(err) {
+                    // Older browsers like IE8 don't let you change
+                    // the type attribute of an input.
+                    //
+                    // We'll break out briefly into regular javascript
+                    // to retrieve the attributes as an array, then transfer
+                    // the array of attributes into the options map
+                    // without overriding any keys that already exist
+                    // in the map.
+                    //
+                    // Note that this is not a deep clone operation, 
+                    // so if you have defined event handlers on the  
+                    // original input, they won't survive the transition.
+                    var attributes = $this.get(0).attributes;
+                           
+                    for(i = 0; i < attributes.length; i++) {
+                        if( options[attributes[i].name] == null ) {
+                            options[attributes[i].name] = attributes[i].value;
+                        }
+                    }
+
+                    // now create a brand new input element, add it to the
+                    // dom, and remove the old one.
+                    $("<input/>").attr(options).insertAfter($this).prev().remove();
+                }
+            }
+        );
+    }
+})(jQuery);
+
+$(function() {
+    var $secnav = $('#wb-sec');
+    if ( $secnav.length !== 0 && $secnav.find('.wb-navcurr').length === 0 ) {
+        // Trigger the navcurrent plugin
+        $secnav.trigger('navcurr.wb');
+    }
+});
+
+/** Steps plugin. */
+(function( $, window, wb ) {
+"use strict";
+
+var componentName = "wb-cra-steps",
+    selector = "." + componentName,
+    initEvent = "wb-init" + selector,
+    $document = wb.doc,
+    defaults = {},
+
+    
+    /**
+     * @method init
+     * @param {jQuery Event} event Event that triggered the function call
+     */
+    init = function( event ) {
+
+        // Start initialization
+        // returns DOM object = proceed with init
+        // returns undefined = do not proceed with init (e.g., already initialized)
+        var elm = wb.init( event, componentName, selector ),
+            $elm,
+            settings;
+
+        if ( elm ) {
+            $elm = $( elm );
+
+            // Get the plugin JSON configuration set on attribute data-wb-cra-steps
+            settings = $.extend(
+                    true,
+                    {},
+                    defaults,
+                    window[ componentName ],
+                    wb.getData( $elm, componentName )
+                    );
+
+            const icons = settings["icons"];
+            const hasOverlay = settings["overlay"] !== "none";
+
+            var ul,
+                steps,
+                activeStep,
+                activeStepIndex,
+                progress,
+                percentComplete,
+                icon,
+                stepText,
+                stepContentClass,
+                hasLabel;
+
+            ul = $elm.find("ul").first();
+
+            ul.addClass("list-inline");
+            steps = ul.children( "li" );
+
+            activeStep = ul.find("li.step-active");
+            activeStepIndex = activeStep.index();
+
+            const numSteps = steps.length;
+            if ( icons ) {
+                if( numSteps != icons.length ) {
+                    throw "Length mismatch";
+                }
+            }
+            if ( icons && !hasOverlay ) {
+                throw "Invalid settings";
+            }
+            const increment = (100 / (numSteps - 1) / 2);
+            if ( activeStepIndex == -1 ) {
+                percentComplete = 100;
+            } else {
+                percentComplete = Math.round(increment + increment * 2.0 * activeStepIndex);
+            }
+
+            $elm.prepend('<progress value="' +  percentComplete + '" max="100" aria-hidden="true"></progress>');
+
+            steps.each( function(index) {
+                var $this = $(this);
+                $this.addClass("step");
+
+                $this.css("left", Math.round((100 / (numSteps - 1)) * index) + "%");
+
+                icon = "";
+                stepText = "";
+                stepContentClass = "";
+
+                if ( hasOverlay ) {
+                    if ( icons ) {
+                        icon = icons[index];
+                    } else {
+                        stepText = index + 1;
+                        stepContentClass = 'step-text-content';
+                    }
+                }
+                var appendTo = $this;
+                if($this.children("a").length > 0) {
+                    appendTo = $this.children("a").first();
+                    appendTo.addClass("step-link");
+                }
+
+                var labelText = "";
+                
+                
+                const label = '<span class="step-text">' + labelText + '</span>';
+                if ( activeStepIndex == -1 || index < activeStepIndex ) {
+                    const hiddenText = appendTo.text();
+                    appendTo.find('span.wb-inv').remove();
+                    labelText = appendTo.html();
+                    appendTo.text("");
+                    appendTo.prepend('<i class="fa fa-stack fa-2x step-stack" aria-hidden="true">' + 
+                        '<i class="fa fa-circle fa-stack-2x step-background"></i>' +
+                        '<i class="fa fa-check fa-stack-1x fa-inverse step-content"> </i><span class="step-text">' + labelText + '</span>');
+                    $this.addClass("step-done");
+                   appendTo.append('<span class="wb-inv">' + hiddenText + '</span>');
+                } else {
+                if ( index == activeStepIndex ) {
+                    labelText = appendTo.text();
+                    appendTo.text("");
+                    appendTo.prepend('<i class="fa fa-stack fa-2x step-stack" aria-hidden="true"> '+
+                        '<i class="fa fa-circle fa-stack-2x fa-inverse step-background"></i>' + 
+                        '<i class="far fa-circle fa-stack-2x step-border"></i>' +
+                        '<i class="fa fa-stack-1x '+ icon + ' step-content"><span class="' + stepContentClass + '">' + stepText + '</span></i><span class="step-text">' + labelText + '</span>');
+                     appendTo.append('<span class="wb-inv">' + labelText + '</span>');
+                } else {
+                if ( index > activeStepIndex ) {
+                    labelText = appendTo.text();
+                    appendTo.text("");
+                    $this.addClass("step-not-active");
+                    appendTo.prepend('<i class="fa fa-stack fa-2x step-stack" aria-hidden="true">'+
+                        '<i class="fa fa-circle fa-stack-2x fa-inverse step-background"></i>' + 
+                        '<i class="far fa-circle fa-stack-2x step-border"></i>' +
+                        '<i class="fa fa-stack-1x '+ icon + ' step-content"><span class="' + stepContentClass + '">' + stepText + '</span></i> <span class="step-text">' + labelText + '</span>');
+                    appendTo.append('<span class="wb-inv">' + labelText + '</span>');
+                }}
+                }
+            });
+
+            $elm.css("visibility", "visible");
+            // Identify that initialization has completed
+            wb.ready( $elm, componentName );
+        }
+    };
+
+    // Bind the init event of the plugin
+    $document.on( "timerpoke.wb " + initEvent, selector, init );
+
+    // Add the timer poke to initialize the plugin
+    wb.add( selector );
+
+} )( jQuery, window, wb );
