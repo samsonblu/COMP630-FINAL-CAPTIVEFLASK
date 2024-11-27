@@ -1,17 +1,17 @@
 # COMP630-FINAL-CAPTIVEFLASK
 Developing a captive portal for Wifipumpkin's captiveflask plugin
  
-## Description
+### Description
 Developing a custom captiveflask plugin to perform an Evil Twin credential capture. This project recreates a simplified version of the Canada Revenue Agency (CRA) login portal for educational purposes. It's designed to demonstrate the creation of captive portals and should **not** be used for malicious activities. This is purely for learning and understanding the techniques involved.
 
-## Key Resources
+### Key Resources
 A few very helpful resources that were used to create this template:
 
 https://github.com/mh4x0f/extra-captiveflask
 
 https://wifipumpkin3.github.io/2022/captiveflask-portal-build/
 
-## Creating the Captive Portal
+### Creating the Captive Portal
 
 The project started by identifying a target login portal (CRA) and saving its HTML source code. The HTML was then significantly simplified, retaining only the core login functionality and essential visual elements. This simplified version focuses solely on the functional aspects of the login process, removing unnecessary elements from the original CRA website. This simulates a CRA login page. Upon submission of login credentials the user is redirected to a "login successful" page, while their credentials are captured to Wifipumpkin. This response could be a  No actual authentication with the CRA system occurs.
 
@@ -48,7 +48,7 @@ craplugin/
     └── login_successful.html
 ```
 
-# Disclaimer
+### Disclaimer
 Any malicious use of the contents from this repository, will not hold the author responsible, the contents are solely for educational purpose.
 
 Usage of this template for attacking without prior mutual consistency can be considered as an illegal activity.
