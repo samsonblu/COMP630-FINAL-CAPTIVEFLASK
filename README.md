@@ -1,10 +1,29 @@
 # COMP630-FINAL-CAPTIVEFLASK
  Developing a captive portal for Wifipumpkin's captiveflask plugin
  
-**Description**
+# Description
 Developing a custom captiveflask plugin to perform an Evil Twin credential capture.
 
-**Disclaimer**
+# Creating the Captive Portal
+Here is the file architecture:
+```
+craplugin/
+├── static
+│   ├── css
+│   │   ├── 
+│   │   ├── 
+│   │   ├── 
+│   │   └── 
+│   └── images
+│       ├── 
+│       ├── 
+│       └── 
+└── templates
+    ├── login.html
+    └── login_successful.html
+```
+
+# Disclaimer
 Any malicious use of the contents from this repository, will not hold the author responsible, the contents are solely for educational purpose.
 
 Usage of this template for attacking without prior mutual consistency can be considered as an illegal activity.
