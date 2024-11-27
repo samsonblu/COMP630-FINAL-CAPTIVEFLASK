@@ -2,7 +2,9 @@
 Developing a captive portal for Wifipumpkin's captiveflask plugin
  
 ### Description
-Developing a custom captiveflask plugin to perform an Evil Twin credential capture. This project recreates a simplified version of the Canada Revenue Agency (CRA) login portal for educational purposes. It's designed to demonstrate the creation of captive portals and should **not** be used for malicious activities. This is purely for learning and understanding the techniques involved.
+Developing a custom captiveflask plugin to perform an Evil Twin credential capture. This project recreates a simplified version of the Canada Revenue Agency (CRA) login portal for educational purposes. It's designed to demonstrate the creation of captive portals and should **not** be used for malicious activities. This project is purely for learning and understanding the techniques involved.
+
+A wireless adapter is required, the one used in this instanace is the Alfa AWUS1900.
 
 ### Key Resources
 A few very helpful resources that were used to create this template:
@@ -46,6 +48,44 @@ craplugin/
 └── templates
     ├── login.html
     └── login_successful.html
+```
+
+### Captive Portal Setup
+
+**Install the craplugin.zip, then run Wifipumpkin3.**
+
+```
+sudo wp3 
+```
+
+**Install the plugin to Wifipumpkin.**
+
+```
+wp3 > use misc.custom_captiveflask
+wp3 > install craplugin craplugin.zip
+```
+
+**Restart Wifipumpkin3.** 
+
+**Set up the portal.**
+
+```
+wp3 > set interface wlan0
+wp3 > set ssid CRA Portal
+wp3 > set proxy captiveflask
+wp3 > set captiveflask.craplugin true
+```
+
+**Verify that the proxy is set up**
+
+```
+wp3 > proxies
+```
+
+**Start the instance**
+
+```
+wp3 > start
 ```
 
 ### Disclaimer
