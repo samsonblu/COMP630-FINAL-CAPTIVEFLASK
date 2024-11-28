@@ -13,9 +13,9 @@ https://github.com/mh4x0f/extra-captiveflask
 
 https://wifipumpkin3.github.io/2022/captiveflask-portal-build/
 
-### Creating the Captive Portal
+## Creating the Captive Portal
 
-The project started by identifying a target login portal (CRA) and saving its HTML source code. The HTML was then significantly simplified, retaining only the core login functionality and essential visual elements. This simplified version focuses solely on the functional aspects of the login process, removing unnecessary elements from the original CRA website. This simulates a CRA login page. Upon submission of login credentials the user is redirected to a "login successful" page, while their credentials are captured to Wifipumpkin. This response could be a  No actual authentication with the CRA system occurs.
+The project started by identifying a target login portal (CRA) and saving its HTML source code. The HTML was then significantly simplified, retaining only the core login functionality and essential visual elements. This simplified version focuses solely on the functional aspects of the login process, removing unnecessary elements from the original CRA website. This simulates a CRA login page. Upon submission of login credentials the user is redirected to a "redirecting" page, while their credentials are captured to Wifipumpkin. No actual authentication with the CRA system occurs.
 
 ### Configuration File
 
@@ -48,6 +48,25 @@ craplugin/
 └── templates
     ├── login.html
     └── login_successful.html
+```
+
+### Issues and Debugging.
+Wifipumpkin seems to be very stringent with the input fields for credential capture, and this was the biggest problem I came across that hindered its success.
+
+In previous versions username input was labelled as username or userid.
+
+```
+        <label class="required" for="UserID">User  ID <strong class="required"><i>(required)</i></strong></label>
+        <input type="text" name="UserID" id="UserID" class="form-control" required>
+        <p><a href="#">Forgot your user ID?</a></p>
+```
+
+What ended up working was changing the label to login, possibly indicative that Wifipumpkin is looking for "login". 
+
+```
+        <label class="required" for="login">User  ID <strong class="required"><i>(required)</i></strong></label>
+        <input type="text" name="login" id="login" class="form-control" required>
+        <p><a href="#">Forgot your user ID?</a></p>
 ```
 
 ### Captive Portal Setup
