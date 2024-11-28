@@ -15,25 +15,14 @@
 </head>
 <body>
     <header>
-        <div id="wb-bnr" class="container">
+        <div class="container">
             <div class="row">
-                <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" resource="#wb-publisher" typeof="GovernmentOrganization">
+                <div class="brand col-xs-9 col-sm-5 col-md-4">
                     <img alt="Government of Canada" src="../static/images/sig-blk-en.svg" property="logo">
-                    <span class="wb-inv" property="name">Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
-                    <meta property="name" content="Government of Canada">
-                    <meta property="areaServed" typeof="Country" content="Canada">
                     <link property="logo" href="../static/images/wmms-blk.svg">
                 </div>
                 
-                <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
-                    <h2>Menu</h2>
-                    <nav role="navigation" typeof="SiteNavigationElement" id="info-pnl" class="info-pnl wb-menu">
-                        <h3>About this site</h3>
-                        <ul class="list-unstyled mb-menu" role="menu">
-                            <li><a class="mb-item" role="menuitem" href="https://www.canada.ca/en/transparency/terms.html" target="_blank" rel="noopener noreferrer">Terms and conditions</a></li>
-                            <li><a class="mb-item" role="menuitem" href="https://www.canada.ca/en/transparency/privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
-                        </ul>
-                    </nav>
+                <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs">
                 </section>
             </div>
         </div>
@@ -49,113 +38,32 @@
         </div>
     </header>
 
-    <main role="main" class="container">
-        <h1>CRA Sign In</h1>
-        <form class="form-signin" method="POST">
-            <div class="form-group">
-                <label for="userid" class="required">User  ID <strong class="required"><i>(required)</i></strong></label>
-                <input type="text" name="USERID" id="userid" class="form-control" autocomplete="off" required>
-                <p><a href="">Forgot your user ID?</a></p>
-            </div>
-            <div class="form-group">
-                <label for="password" class="required">Password <strong class="required"><i>(required)</i></strong></label>
-                <input type="text" name="PASSWORD" id="password" class="form-control" autocomplete="off" required>
-                <p><a href="">Forgot your password?</a></p>
-            </div>
+    <div class="container">
+        <div class="box">
+            <h1>CRA Sign In</h1>
+            <form method="post">
+            <label class="required">User  ID <strong class="required"><i>(required)</i></strong></label>
+            <input type="text" name="username" id="username" class="form-control" required>
+            <p><a href="#">Forgot your user ID?</a></p>
+            
+            
+            <label class="required">Password <strong class="required"><i>(required)</i></strong></label>
+            <input type="password" name="password" id="password" class="form-control" required>
+            <p><a href="#">Forgot your password?</a></p>
+            
+           
 
-            <p>For more information on how your privacy is protected, refer to our <a href="">Personal Information Collection Statement</a>.</p>
+            <p>For more information on how your privacy is protected, refer to our <a href="#">Personal Information Collection Statement</a>.</p>
 
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary submit_h">Sign In</button>
-                <input type="button" value="Exit" class="btn btn-default">
-            </div>
-        </form>
+            
+            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" class="btn btn-default">Exit</button>
 
-        <div id="authOptions">
-            <form id="options" method="post">
-                <script type="text/javascript">
-                    function SelectOption(option) {
-                        var i = document.getElementById('optionSelection');
-                        i.value = option;
-                        document.forms['options'].submit();
-                        return false;
-                    }
-                </script>
-                <input id="optionSelection" type="hidden" name="AuthMethod">
-                <div id="authOptionLinks" class="groupMargin"></div>
             </form>
-          </div>
-          
-    
-            <div id="introduction" class="groupMargin">
-                                     
-            </div>
-    
-            <script type="text/javascript">
-            //<![CDATA[
-    
-                function Login() {
-                }
-    
-                Login.userNameInput = 'userNameInput';
-                Login.passwordInput = 'passwordInput';
-    
-                Login.initialize = function () {
-    
-                    var u = new InputUtil();
-    
-                    u.checkError();
-                    u.setInitialFocus(Login.userNameInput);
-                    u.setInitialFocus(Login.passwordInput);
-                }();
-    
-                Login.submitLoginRequest = function () { 
-                    var u = new InputUtil();
-                    var e = new LoginErrors();
-    
-                    var userName = document.getElementById(Login.userNameInput);
-                    var password = document.getElementById(Login.passwordInput);
-    
-                    if (!userName.value || !userName.value.match('[@\\\\]')) {
-                        u.setError(userName, e.userNameFormatError);
-                        return false;
-                    }
-    
-                    if (!password.value) {
-                        u.setError(password, e.passwordEmpty);
-                        return false;
-                    }
-    
-                    if (password.value.length > maxPasswordLength) {
-                        u.setError(password, e.passwordTooLong);
-                        return false;
-                    }
-    
-                    document.forms['loginForm'].submit();
-                    return false;
-                };
-    
-                InputUtil.makePlaceholder(Login.userNameInput);
-                InputUtil.makePlaceholder(Login.passwordInput);
-            //]]>
-            </script>
         </div>
-    
-        </div>
-    
-                    </div>
-                    <div id="footerPlaceholder"></div>
-                </div>
-                <div id="footer">
-                    <div id="footerLinks" class="floatReverse">
-                         <div><span id="copyright">© 2016 Microsoft</span></div>
-                    </div>
-                </div>
-            </div> 
-        </div>
-        <script type="text/javascript">
-
-            </script>
+                
         
-        <p>To <a href="">register</a> if you are a new user.</p>
-        <p>To <a href="">revoke or change your CRA user ID
+        <p>To <a href="#">register</a> if you are a new user.</p>
+        <p>To <a href="#">revoke or change your CRA user ID
+    </div>
+</body>
