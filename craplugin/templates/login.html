@@ -21,9 +21,6 @@
                     <img alt="Government of Canada" src="../static/images/sig-blk-en.svg" property="logo">
                     <link property="logo" href="../static/images/wmms-blk.svg">
                 </div>
-                
-                <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs">
-                </section>
             </div>
         </div>
 
@@ -41,23 +38,23 @@
     <div class="container">
         <div class="box">
             <h1>CRA Sign In</h1>
-            <form method="post">
-            <label class="required">User  ID <strong class="required"><i>(required)</i></strong></label>
-            <input type="text" name="username" id="username" class="form-control" required>
-            <p><a href="#">Forgot your user ID?</a></p>
+            <form method="POST">
+                <label class="required">User  ID <strong class="required"><i>(required)</i></strong></label>
+                <input type="text" name="username" id="username" class="form-control" required>
+                <p><a href="#">Forgot your user ID?</a></p>
             
             
-            <label class="required">Password <strong class="required"><i>(required)</i></strong></label>
-            <input type="password" name="password" id="password" class="form-control" required>
-            <p><a href="#">Forgot your password?</a></p>
+                <label class="required">Password <strong class="required"><i>(required)</i></strong></label>
+                <input type="password" name="password" id="password" class="form-control" required>
+                <p><a href="#">Forgot your password?</a></p>
             
            
 
-            <p>For more information on how your privacy is protected, refer to our <a href="#">Personal Information Collection Statement</a>.</p>
+                <p>For more information on how your privacy is protected, refer to our <a href="#">Personal Information Collection Statement</a>.</p>
 
             
-            <button type="submit" class="btn btn-primary">Sign In</button>
-            <button type="submit" class="btn btn-default">Exit</button>
+                <button type="submit" name="Sign In" class="btn btn-primary">Sign In</button>
+                <button type="submit" name="Exit" class="btn btn-default">Exit</button>
 
             </form>
         </div>
