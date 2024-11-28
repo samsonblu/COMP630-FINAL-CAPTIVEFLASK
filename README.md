@@ -56,17 +56,15 @@ Wifipumpkin seems to be very stringent with the input fields for credential capt
 In previous versions username input was labelled as username or userid.
 
 ```
-        <label class="required" for="UserID">User  ID <strong class="required"><i>(required)</i></strong></label>
-        <input type="text" name="UserID" id="UserID" class="form-control" required>
-        <p><a href="#">Forgot your user ID?</a></p>
+<label class="required" for="UserID">User  ID <strong class="required"><i>(required)</i></strong></label>
+<input type="text" name="UserID" id="UserID" class="form-control" required>
 ```
 
 What ended up working was changing the label to login, possibly indicative that Wifipumpkin is looking for "login". 
 
 ```
-        <label class="required" for="login">User  ID <strong class="required"><i>(required)</i></strong></label>
-        <input type="text" name="login" id="login" class="form-control" required>
-        <p><a href="#">Forgot your user ID?</a></p>
+<label class="required" for="login">User  ID <strong class="required"><i>(required)</i></strong></label>
+<input type="text" name="login" id="login" class="form-control" required>
 ```
 
 ### Captive Portal Setup
