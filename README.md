@@ -42,12 +42,9 @@ craplugin/
 │   │   ├── apps.css
 │   │   ├── common.css
 │   │   └── theme.min.css
-│   ├── images
-│   │   ├── sig-blk-en.svg
-│   │   └── wmms-blk.svg
-│   └── js
-│       ├── bootstrap.min.js
-│       └── jquery-1.11.1.min.js
+│   └── images
+│       ├── sig-blk-en.svg
+│       └── wmms-blk.svg
 └── templates
     ├── login.html
     └── login_successful.html
